@@ -31,7 +31,7 @@ type UpdateBookInput struct {
 
 func FindBooks(c *gin.Context) {
 	var books []models.Book
-	models.DB.Find(&books)
+	models.GetDB().Find(&books)
 
 	c.JSON(http.StatusOK, gin.H{"data": books})
 }
@@ -44,7 +44,7 @@ func CreateBook(c *gin.Context) {
 	}
 
 	book := models.Book{Title: input.Title, Author: input.Author}
-	models.DB.Create(&book)
+	models.GetDB().Create(&book)
 
 	c.JSON(http.StatusOK, gin.H{"data": book})
 }
@@ -53,7 +53,7 @@ func FindBook(c *gin.Context) {
 	var book models.Book
 
 	bookId := c.Param("id")
-	if err := models.DB.Where("id = ?", bookId).First(&book).Error; err != nil {
+	if err := models.GetDB().Where("id = ?", bookId).First(&book).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
@@ -65,7 +65,7 @@ func UpdateBook(c *gin.Context) {
 	var book models.Book
 
 	bookId := c.Param("id")
-	if err := models.DB.Where("id = ?", bookId).First(&book).Error; err != nil {
+	if err := models.GetDB().Where("id = ?", bookId).First(&book).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
@@ -76,7 +76,7 @@ func UpdateBook(c *gin.Context) {
 		return
 	}
 
-	models.DB.Model(&book).Updates(input)
+	models.GetDB().Model(&book).Updates(input)
 
 	c.JSON(http.StatusOK, gin.H{"data": book})
 }
@@ -85,12 +85,12 @@ func DeleteBook(c *gin.Context) {
 	var book models.Book
 
 	bookId := c.Param("id")
-	if err := models.DB.Where("id = ?", bookId).First(&book).Error; err != nil {
+	if err := models.GetDB().Where("id = ?", bookId).First(&book).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
 
-	models.DB.Delete(&book)
+	models.GetDB().Delete(&book)
 
 	c.JSON(http.StatusOK, gin.H{"data": true})
 }

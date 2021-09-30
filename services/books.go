@@ -12,11 +12,11 @@ type BooksService struct {
 func (booksService BooksService) GetBooks() ([]dtos.BookData, error) {
 	books, err := booksService.IBookRepository.GetBooks()
 	var booksData []dtos.BookData
-	for _, b := range books {
+	for _, book := range books {
 		booksData = append(booksData, dtos.BookData{
-			ID: b.ID,
-			Author: b.Author,
-			Title: b.Title,
+			ID: book.ID,
+			Author: book.Author,
+			Title: book.Title,
 		})
 	}
 	return booksData, err

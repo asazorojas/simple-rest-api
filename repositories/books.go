@@ -10,9 +10,13 @@ type BookRepository struct {
 }
 
 func (bookRepository BookRepository) GetBooks() ([]models.Book, error) {
-	return nil, nil
+	var books []models.Book
+	err := bookRepository.DB.Find(&books).Error
+	return books, err
 }
 
 func (bookRepository BookRepository) GetBookById(bookId int) (models.Book, error) {
-	return models.Book{}, nil
+	var book models.Book
+	err := bookRepository.DB.Find(&book).Error
+	return book, err
 }
