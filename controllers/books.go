@@ -3,21 +3,22 @@ package controllers
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"simple-rest-api/interfaces"
 	"simple-rest-api/models"
 )
 
-//type BooksController struct {
-//	interfaces.IBooksService
-//}
+type BooksController struct {
+	interfaces.IBooksService
+}
 
-//func (controller BooksController) FindBooks(c *gin.Context) {
-//	books, err := controller.IBooksService.GetBooks()
-//	if err != nil {
-//		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-//		return
-//	}
-//	c.JSON(http.StatusOK, gin.H{"data": books})
-//}
+func (controller BooksController) FindBooks(c *gin.Context) {
+	books, err := controller.IBooksService.GetBooks()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": books})
+}
 
 type CreateBookInput struct {
 	Title  string `json:"title" binding:"required"`

@@ -124,7 +124,7 @@ func main() {
 	//	apiV100.DELETE("/books/:id", controllers.DeleteBook)
 	//}
 
-	models.ConnectDataBase()
+	db.ConnectDataBase()
 
 	router.GET("/books", controllers.FindBooks)
 	router.POST("/books", controllers.CreateBook)
@@ -140,7 +140,7 @@ func main() {
 }
 */
 
-//booksRepository := repositories.BookRepository{DB: nil}
+//booksRepository := repositories.BookRepository{DB: db.GetDB()}
 //booksService := services.BooksService{IBookRepository: booksRepository}
 //booksController := controllers.BooksController{IBooksService : booksService}
 

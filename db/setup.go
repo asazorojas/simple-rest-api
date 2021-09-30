@@ -1,8 +1,8 @@
-package models
+package db
 
 import (
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"simple-rest-api/models"
 )
 
 var db *gorm.DB
@@ -14,11 +14,14 @@ func ConnectDataBase() {
 		panic("Failed to connect to database!")
 	}
 
-	database.AutoMigrate(&Book{})
+	database.AutoMigrate(&models.Book{})
 
 	db = database
 }
 
 func GetDB() *gorm.DB {
+	if db == nil {
+		ConnectDataBase()
+	}
 	return db
 }
