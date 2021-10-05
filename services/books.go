@@ -14,9 +14,9 @@ func (booksService BooksService) GetBooks() ([]dtos.BookData, error) {
 	var booksData []dtos.BookData
 	for _, book := range books {
 		booksData = append(booksData, dtos.BookData{
-			ID: book.ID,
+			ID:     book.ID,
 			Author: book.Author,
-			Title: book.Title,
+			Title:  book.Title,
 		})
 	}
 	return booksData, err
@@ -25,10 +25,8 @@ func (booksService BooksService) GetBooks() ([]dtos.BookData, error) {
 func (booksService BooksService) GetBookById(bookId int) (dtos.BookData, error) {
 	book, err := booksService.IBookRepository.GetBookById(bookId)
 	return dtos.BookData{
-		ID: book.ID,
+		ID:     book.ID,
 		Author: book.Author,
-		Title: book.Title,
+		Title:  book.Title,
 	}, err
 }
-
-

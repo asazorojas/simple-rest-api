@@ -11,7 +11,7 @@ type BooksController struct {
 	interfaces.IBooksService
 }
 
-func (controller BooksController) FindBooks(c *gin.Context) {
+func (controller BooksController) FindBooksV2(c *gin.Context) {
 	books, err := controller.IBooksService.GetBooks()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
