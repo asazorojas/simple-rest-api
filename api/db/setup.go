@@ -3,7 +3,6 @@ package db
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"log"
 	"simple-rest-api/api/models"
 )
 
@@ -23,9 +22,7 @@ func ConnectDataBase() {
 
 func GetDB() *gorm.DB {
 	if db == nil {
-		log.Println("it was nil")
 		ConnectDataBase()
 	}
-	log.Println("it is nil no more, returning...")
 	return db
 }

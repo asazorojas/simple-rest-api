@@ -11,6 +11,6 @@ type IBookRepository interface {
 }
 
 type IBooksService interface {
-	GetBooks() ([]dtos.BookData, error)
-	GetBookById(bookId int) (dtos.BookData, error)
+	GetBooks() ([]dtos.BookDataV2, error)
+	GetBookById(bookId int) (dtos.BookDataV2, error)
 }

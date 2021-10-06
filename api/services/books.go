@@ -9,9 +9,9 @@ type BooksService struct {
 	interfaces.IBookRepository
 }
 
-func (booksService BooksService) GetBooks() ([]dtos.BookData, error) {
+func (booksService BooksService) GetBooks() ([]dtos.BookDataV2, error) {
 	books, err := booksService.IBookRepository.GetBooks()
-	var booksData []dtos.BookData
+	var booksData []dtos.BookDataV2
 
 	if err != nil {
 		return nil, err
@@ -19,21 +19,21 @@ func (booksService BooksService) GetBooks() ([]dtos.BookData, error) {
 
 	if len(books) > 0 {
 		for _, book := range books {
-			booksData = append(booksData, dtos.BookData{
+			booksData = append(booksData, dtos.BookDataV2{
 				ID:     book.ID,
 				Author: book.Author,
 				Title:  book.Title,
 			})
 		}
 	} else {
-		booksData = []dtos.BookData{}
+		booksData = []dtos.BookDataV2{}
 	}
 	return booksData, err
 }
 
-func (booksService BooksService) GetBookById(bookId int) (dtos.BookData, error) {
+func (booksService BooksService) GetBookById(bookId int) (dtos.BookDataV2, error) {
 	book, err := booksService.IBookRepository.GetBookById(bookId)
-	return dtos.BookData{
+	return dtos.BookDataV2{
 		ID:     book.ID,
 		Author: book.Author,
 		Title:  book.Title,
