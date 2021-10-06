@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"github.com/jinzhu/gorm"
-	"simple-rest-api/models"
+	"simple-rest-api/api/models"
 )
 
 type BookRepository struct {

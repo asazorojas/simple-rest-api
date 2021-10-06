@@ -1,8 +1,8 @@
 package interfaces
 
 import (
-	"simple-rest-api/dtos"
-	"simple-rest-api/models"
+	"simple-rest-api/api/dtos"
+	"simple-rest-api/api/models"
 )
 
 type IBookRepository interface {
