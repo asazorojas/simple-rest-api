@@ -1,4 +1,4 @@
-package services
+package servicesV101
 
 import (
 	"simple-rest-api/api/dtos"

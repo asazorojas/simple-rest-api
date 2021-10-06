@@ -1,4 +1,4 @@
-package controllers
+package controllersV101
 
 import (
 	"github.com/gin-gonic/gin"

@@ -1,4 +1,4 @@
-package repositories
+package repositoriesV101
 
 import (
 	"github.com/jinzhu/gorm"
