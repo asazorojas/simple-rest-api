@@ -36,3 +36,13 @@ To run tests, when available just run:
 ```
 go1.16.4 test ./...
 ```
+
+## Dependencies
+
+> GoSqlMock : github.com/DATA-DOG/go-sqlmock v1.5.0
+
+> Gin: github.com/gin-gonic/gin v1.7.4
+
+> GORM: github.com/jinzhu/gorm v1.9.16
+
+> Testify: github.com/stretchr/testify v1.4.0 
