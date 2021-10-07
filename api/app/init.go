@@ -16,8 +16,9 @@ func getGinEngine() *gin.Engine {
 }
 
 func Start() {
+	dbTarget := "local.db"
 	// Try to connect to DB
-	db.ConnectDataBase()
+	db.SetupModels(dbTarget)
 
 	// Get Gin Engine
 	router := getGinEngine()
@@ -27,8 +28,8 @@ func Start() {
 	addRecoveryMiddleware(router)
 
 	// Setup routes for V100 and V101 endpoints
-	setupV100RoutesMapping(router)
-	setupV101RoutesMapping(router)
+	SetupV100RoutesMapping(router)
+	SetupV101RoutesMapping(router)
 	setupNoRouteMapping(router)
 
 	router.Run(":8080")
@@ -54,7 +55,7 @@ func addRecoveryMiddleware(router *gin.Engine) {
 	}))
 }
 
-func setupV100RoutesMapping(router *gin.Engine) {
+func SetupV100RoutesMapping(router *gin.Engine) {
 	apiV100 := router.Group("/api/v100")
 	{
 		apiV100.GET("/books", controllersV100.FindBooks)
@@ -65,7 +66,7 @@ func setupV100RoutesMapping(router *gin.Engine) {
 	}
 }
 
-func setupV101RoutesMapping(router *gin.Engine) {
+func SetupV101RoutesMapping(router *gin.Engine) {
 	booksRepository := repositoriesV101.BookRepository{DB: db.GetDB()}
 	booksService := servicesV101.BooksService{IBookRepository: booksRepository}
 	booksController := controllersV101.BooksV101Controller{IBooksService: booksService}

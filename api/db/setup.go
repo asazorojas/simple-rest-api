@@ -8,8 +8,8 @@ import (
 
 var db *gorm.DB
 
-func ConnectDataBase() {
-	database, err := gorm.Open("sqlite3", "test.db")
+func SetupModels(dbTarget string) {
+	database, err := gorm.Open("sqlite3", dbTarget)
 
 	if err != nil {
 		panic("Failed to connect to database!")
@@ -21,8 +21,5 @@ func ConnectDataBase() {
 }
 
 func GetDB() *gorm.DB {
-	if db == nil {
-		ConnectDataBase()
-	}
 	return db
 }
