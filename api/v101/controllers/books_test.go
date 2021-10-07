@@ -86,6 +86,7 @@ func TestCRUDFunctions(t *testing.T) {
 		var response AllBooksResponse
 		json.Unmarshal([]byte(w.Body.String()), &response)
 
+		booksServiceMock.AssertExpectations(t)
 		AssertExpected(t, w.Code, http.StatusOK)
 		AssertExpected(t, len(w.Body.String()) > 0, true)
 		AssertExpected(t, expectedResponse, response)
@@ -109,6 +110,7 @@ func TestCRUDFunctions(t *testing.T) {
 		var response BookByIdV2Response
 		json.Unmarshal([]byte(w.Body.String()), &response)
 
+		booksServiceMock.AssertExpectations(t)
 		AssertExpected(t, w.Code, http.StatusOK)
 		AssertExpected(t, len(w.Body.String()) > 0, true)
 		AssertExpected(t, expectedResponse, response)
@@ -130,6 +132,7 @@ func TestCRUDFunctions(t *testing.T) {
 		var response ErrorResponse
 		json.Unmarshal([]byte(w.Body.String()), &response)
 
+		booksServiceMock.AssertExpectations(t)
 		AssertExpected(t, w.Code, http.StatusBadRequest)
 		AssertExpected(t, len(w.Body.String()) > 0, true)
 		AssertExpected(t, expectedResponse, response)
