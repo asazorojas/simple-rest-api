@@ -9,58 +9,6 @@ import (
 	"testing"
 )
 
-//type Suite struct {
-//	suite.Suite
-//	DB   *gorm.DB
-//	mock sqlmock.Sqlmock
-//
-//	repository BookRepository
-//	book     *models.Book
-//}
-//
-//func (s *Suite) SetupSuite() {
-//	var (
-//		db  *sql.DB
-//		err error
-//	)
-//
-//	db, s.mock, err = sqlmock.New()
-//	require.NoError(s.T(), err)
-//
-//	s.DB, err = gorm.Open("sqlite3", db)
-//	require.NoError(s.T(), err)
-//
-//	s.DB.LogMode(true)
-//
-//	s.repository = BookRepository{DB: s.DB}
-//}
-//
-//func (s *Suite) AfterTest(_, _ string) {
-//	require.NoError(s.T(), s.mock.ExpectationsWereMet())
-//}
-//
-//func TestInit(t *testing.T) {
-//	suite.Run(t, new(Suite))
-//}
-//
-//func (s *Suite) Test_repository_GetAllBooks() {
-//	var (
-//		id = 1
-//		title = "The Lord of the Rings"
-//		author = "J.R.R Tolkien"
-//	)
-//
-//	s.mock.ExpectQuery(
-//		regexp.QuoteMeta(`SELECT * FROM "books"`)).
-//		WillReturnRows(sqlmock.NewRows([]string{"id", "author", "title"}).
-//			AddRow(id, author, title))
-//
-//	books, err := s.repository.GetBooks()
-//
-//	require.NoError(s.T(), err)
-//	assert.NotNil(s.T(), books)
-//}
-
 func Test_repository_GetAllBooks(t *testing.T) {
 	var (
 		id = 1
