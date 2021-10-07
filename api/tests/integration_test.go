@@ -81,7 +81,7 @@ func TestBooksCrud(t *testing.T) {
 	t.Run("Retrieve Existing ID on Populated DB", func(t *testing.T) {
 		w := performRequest(router, "GET", "/api/v100/books/2")
 
-		expected := V1Response {
+		expected := V1Response{
 			Data: V1ResponseData{
 				ID		:  2,
 				Title	: "Harry Potter and The Chamber of Secrets",
@@ -100,7 +100,7 @@ func TestBooksCrud(t *testing.T) {
 	t.Run("Retrieve Existing ID on Populated DB V101", func(t *testing.T) {
 		w := performRequest(router, "GET", "/api/v101/books/2")
 
-		expected := V2Response {
+		expected := V2Response{
 			Data: V2ResponseData{
 				ID		:  2,
 				Title	: "Harry Potter and The Chamber of Secrets",
