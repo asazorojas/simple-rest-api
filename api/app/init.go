@@ -73,5 +73,6 @@ func setupV101RoutesMapping(router *gin.Engine) {
 	apiV101 := router.Group("/api/v101")
 	{
 		apiV101.GET("/books", booksController.FindBooksV2)
+		apiV101.GET("/books/:id", booksController.FindBookByIdV2)
 	}
 }
